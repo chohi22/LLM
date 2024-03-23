@@ -1,4 +1,5 @@
 import os
+os.environ['TORCH_DISTRIBUTED_DEBUG'] = 'DETAIL'
 import sys
 from typing import List
 
@@ -291,7 +292,7 @@ def train(
             num_train_epochs=num_epochs,
             learning_rate=learning_rate,
             # dataloader_num_workers=16,
-            #fp16=True,
+            fp16=True,
             logging_steps=1,
             optim="adamw_torch",
             evaluation_strategy="steps" if val_set_size > 0 else "no",
